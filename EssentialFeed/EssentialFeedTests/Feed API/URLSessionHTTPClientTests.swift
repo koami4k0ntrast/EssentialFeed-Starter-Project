@@ -23,6 +23,8 @@ final class URLSessionHTTPClientTests: XCTestCase {
     func test_getFromURL_getsDataFromURL() {
         let url = anyURL()
 
+        // Test randomly fails when using method exceptation(description:) instead of direct initialization XCTestExpectation.init(description:)
+        // See: https://stackoverflow.com/a/62175055/5603642
         let exp = XCTestExpectation(description: "wait for observation completion")
         URLProtocolStub.observeRequests { capturedRequest in
             // WARNING: as of 2025/08/12 The framework forces trailing "/" when path is empty. So test fails when path is compared with framework-transformed url
@@ -202,6 +204,8 @@ final class URLSessionHTTPClientTests: XCTestCase {
             error: error
         )
         let sut = makeSUT(file: file, line: line)
+        // Test randomly fails when using method exceptation(description:) instead of direct initialization XCTestExpectation.init(description:)
+        // See: https://stackoverflow.com/a/62175055/5603642
         let exp = XCTestExpectation(description: "Wait for get completion")
 
         var receivedResult: HTTPClientResult!
