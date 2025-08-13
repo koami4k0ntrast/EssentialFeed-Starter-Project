@@ -8,6 +8,10 @@
 import XCTest
 
 extension XCTestCase {
+    func expectation(_ description: String = "wait for completion") -> XCTestExpectation {
+        XCTestExpectation(description: description)
+    }
+    
     func trackMemoryLeaks(
         _ instance: AnyObject,
         file: StaticString = #filePath,
